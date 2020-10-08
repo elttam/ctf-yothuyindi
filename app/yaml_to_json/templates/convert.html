@@ -1,0 +1,36 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends 'index.html' %}
+
+{#
+{% block header -%}
+  <h1>{% block title %}Convert{% endblock %}</h1>
+{%- endblock %}
+#}
+
+  {% block content %}
+  {{super()}}
+  <div class="container">
+  	<div class="jumbotron">
+  		<h1>{% block title %}Convert{% endblock %}</h1>
+  	</div>
+	<div class="col-md-12">
+  	<form method="post">
+  	  {#
+  	  {{ form.csrf_token }}
+  	  {{ form.yaml.label }} {{ form.yaml }}
+  	  {{ form.json.label }} {{ form.json }}
+  	  {{ form.submit }}
+			{% if request.args.get('legacy') -%}
+  	  #}
+        <p>Legacy</p>
+	{{wtf.quick_form(form, novalidate=True, button_map={'submit':'primary'})}}
+  	  {#
+			{%- else -%}
+        <p>standard</p>
+  	  	{{ form | render_form() }}
+			{%- endif %}
+  	  #}
+  	</form>
+	</div>
+  </div>
+{% endblock %}

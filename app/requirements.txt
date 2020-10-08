@@ -1,0 +1,10 @@
+flask
+flask_bootstrap
+Flask-WTF
+#bjoern
+gunicorn
+pyyaml
+pytest
+pytest-forked
+pytest-cov
+coverage
